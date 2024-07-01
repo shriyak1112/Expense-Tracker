@@ -1,5 +1,5 @@
 const transactionTypeDef = `#graphql
-type Transaction {
+  type Transaction {
     _id: ID!
     userId: ID!
     description: String!
@@ -11,11 +11,11 @@ type Transaction {
     user: User!
   }
 
-  type Query{
-    transactions: [Transaction!] 
-    #I can fetch all of them
+  type Query {
+    transactions: [Transaction!]
     transaction(transactionId:ID!): Transaction
-    # I cna fetch only 1
+
+    #TODO => ADD CATEGORY STATISTICS
   }
 
   type Mutation {
@@ -23,6 +23,12 @@ type Transaction {
     updateTransaction(input: UpdateTransactionInput!): Transaction!
     deleteTransaction(transactionId:ID!): Transaction!
   }
+
+  type CategoryStatistics {
+    category: String!
+    totalAmount: Float!
+  }
+
   input CreateTransactionInput {
     description: String!
     paymentType: String!
@@ -41,9 +47,6 @@ type Transaction {
     location: String
     date: String
   }
-
-
-
 `;
 
 export default transactionTypeDef;
