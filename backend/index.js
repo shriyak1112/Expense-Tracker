@@ -14,7 +14,6 @@ import { expressMiddleware } from '@apollo/server/express4';
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
 
 import { configurePassport } from './passport/passport.config.js';
-
 import { buildContext } from "graphql-passport";
 
 
@@ -33,7 +32,7 @@ const store = new MongoDBStore({
 
 })
 
-store.on("error",(err) => console.log(error));
+store.on("error",(err) => console.log(err));
 
 app.use(
     session(
@@ -60,7 +59,7 @@ const server = new ApolloServer({
 })
 await server.start();
 app.use(
-    '/',
+    "/graphql",
     cors({
         origin: "http://localhost:3000",
         credentials: true,
@@ -77,4 +76,5 @@ await new Promise((resolve) => httpServer.listen({ port: 4000 }, resolve));
 
 await connectDB();
 
-console.log(`🚀 Server ready at http://localhost:4000/`);
+console.log(`🚀 Server ready at http://localhost:4000/graphql`);
+
