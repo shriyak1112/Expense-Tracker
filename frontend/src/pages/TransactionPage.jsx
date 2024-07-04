@@ -194,7 +194,7 @@ const TransactionPage = () => {
 							id='location'
 							name='location'
 							type='text'
-							placeholder='New York'
+							placeholder='New Delhi'
 							value={formData.location}
 							onChange={handleInputChange}
 						/>
